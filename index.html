@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SLMs in Ed 2026 | Small Language Models for Education</title>
+    <style>
+        :root {
+            --primary-color: #0056b3;
+            --text-color: #333;
+            --bg-color: #fcfcfc;
+            --section-bg: #ffffff;
+            --border-color: #eaeaea;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            line-height: 1.2;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav ul li a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 1rem 1.5rem;
+            font-weight: 500;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            background-color: var(--section-bg);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        h2 {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 0.5rem;
+            margin-top: 0;
+        }
+
+        /* --- Qualtrics Embed Styles --- */
+        .qualtrics-container {
+            margin: 2rem 0;
+            padding: 1rem;
+            background: #f8f9fa;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .qualtrics-container h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .qualtrics-iframe {
+            width: 100%;
+            height: 450px; /* Adjust this height based on how long your poll is */
+            border: none;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        /* ------------------------------ */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        table, th, td {
+            border: 1px solid var(--border-color);
+        }
+
+        th, td {
+            padding: 1rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        .important-dates {
+            list-style: none;
+            padding: 0;
+        }
+
+        .important-dates li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .important-dates li:last-child {
+            border-bottom: none;
+        }
+
+        .organizer-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .organizer {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .organizer h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .organizer p {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footnote {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: #333;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #add8e6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            .important-dates li {
+                flex-direction: column;
+            }
+            .important-dates strong {
+                margin-bottom: 0.25rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Small Language Models for Education</h1>
+        <p>Opportunities, Challenges, and a Shared Research Agenda</p>
+        <p><em>A full-day workshop held at the Festival of Learning</em></p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#cfp">Call for Participation</a></li>
+            <li><a href="#dates">Important Dates</a></li>
+            <li><a href="#submission">Submission Guidelines</a></li>
+            <li><a href="#schedule">Schedule</a></li>
+            <li><a href="#organizers">Organizers</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+
+        <section id="about">
+            <h2>About the Workshop</h2>
+            <p>Small language models (SLMs)—defined as open-weight language models with fewer than 10 billion parameters that can be locally deployed or cheaply hosted—are emerging as a promising alternative to large language models (LLMs) for educational applications.</p>
+            <p>While LLMs have demonstrated impressive natural language processing capabilities, their adoption in education is constrained by privacy concerns, high inference costs, proprietary limitations, and latency issues. SLMs offer a greener, more scalable, and accessible pathway to integrating AI into education, with the capability to be efficiently fine-tuned on high-quality domain-specific data.</p>
+            <p>This full-day workshop aims to explore the potential of SLMs in education. By bringing together experts from the AIED, EDM, and L@S communities, we hope to foster interdisciplinary collaboration and identify new research directions that leverage the unique strengths of SLMs to improve learning outcomes.</p>
+            
+            <!-- Qualtrics Embedded Poll Widget -->
+            <div class="qualtrics-container">
+                <h3>Quick Poll: Share your thoughts!</h3>
+                <!-- PASTE YOUR QUALTRICS ANONYMOUS LINK INTO THE 'src' ATTRIBUTE BELOW -->
+                <iframe class="qualtrics-iframe" src="https://YOUR_UNIVERSITY.qualtrics.com/jfe/form/YOUR_SURVEY_ID_HERE" title="Workshop Poll"></iframe>
+            </div>
+            <!-- End Qualtrics Widget -->
+
+        </section>
+
+        <section id="cfp">
+            <h2>Call for Participation</h2>
+            <p>We invite researchers, educators, and industry professionals from the AIED, EDM, L@S, HCI, and Machine Learning communities to submit their latest work on Small Language Models in educational settings. We are looking for submissions that address, but are not limited to, the following themes:</p>
+            <ul>
+                <li>Pedagogical frameworks and instructional design for SLM-based interventions</li>
+                <li>Methodologies for evaluating and fine-tuning SLMs using educational data</li>
+                <li>Scalability and infrastructure design for deploying SLMs in large-scale settings</li>
+                <li>Privacy, equity, and accessibility considerations of SLMs vs. LLMs</li>
+                <li>Innovative applications (e.g., knowledge component discovery, question generation, adaptive feedback)</li>
+            </ul>
+            <p>Accepted submissions will be presented as <strong>Lightning Talks</strong> (5 minutes + Q&A) or as <strong>Posters</strong> during the afternoon session. Attendees will also actively participate in cross-community speed dating and collaborative synthesis sessions to draft a white paper outlining a shared research agenda.</p>
+        </section>
+
+        <section id="dates">
+            <h2>Important Dates</h2>
+            <ul class="important-dates">
+                <li><strong>Submission Portal Opens:</strong> <span>[TBD Date]</span></li>
+                <li><strong>Paper Submission Deadline:</strong> <span>[TBD Date]</span></li>
+                <li><strong>Notification of Acceptance:</strong> <span>[TBD Date]</span></li>
+                <li><strong>Camera-Ready Deadline:</strong> <span>[TBD Date]</span></li>
+                <li><strong>Workshop Date:</strong> <span>[TBD Date]</span></li>
+            </ul>
+            <p><em>All deadlines are 11:59 PM Anywhere on Earth (AoE).</em></p>
+        </section>
+
+        <section id="submission">
+            <h2>Submission Guidelines</h2>
+            <p>We invite submissions for short papers (2-4 pages, excluding references) detailing ongoing research, recent advancements, or challenges related to SLMs in education.</p>
+            <ul>
+                <li><strong>Format:</strong> Submissions must be formatted using the standard CEUR-WS template.</li>
+                <li><strong>Anonymity:</strong> Reviewing will be single-blind. Submissions do not need to be anonymized.</li>
+                <li><strong>Submission Portal:</strong> Please submit your papers via our <a href="#">EasyChair Submission Link (Coming Soon)</a>.</li>
+            </ul>
+            <p>All accepted lightning talks and posters will be published in the CEUR Workshop Proceedings, which will be made freely available online. Furthermore, all workshop participants will be invited to co-author a white paper outlining a shared research agenda, which will be submitted to a relevant journal (e.g., IJAIED or JEDM).</p>
+        </section>
+
+        <section id="schedule">
+            <h2>Schedule of Intended Activities</h2>
+            <p>The workshop is divided into a "context & connection" morning phase and a "consensus & output" afternoon phase.</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th width="20%">Time</th>
+                        <th>Activity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>09:00 – 09:30</td>
+                        <td><strong>Welcome & Opening Keynote</strong><br>Introduction to SLMs in education and workshop goals.</td>
+                    </tr>
+                    <tr>
+                        <td>09:30 – 10:30</td>
+                        <td><strong>Lightning Talks: The Current State of SLMs</strong><br>5-minute talks (with 2 min Q&A) covering current state, advancements, and challenges.</td>
+                    </tr>
+                    <tr>
+                        <td>10:30 – 11:00</td>
+                        <td><em>Coffee/Tea Break & Networking</em></td>
+                    </tr>
+                    <tr>
+                        <td>11:00 – 12:00</td>
+                        <td><strong>Cross-Community Speed Dating</strong><br>Rotational 5-minute conversations to mix AIED, EDM, and L@S perspectives.</td>
+                    </tr>
+                    <tr>
+                        <td>12:00 – 13:00</td>
+                        <td><em>Lunch Break & Networking</em></td>
+                    </tr>
+                    <tr>
+                        <td>13:00 – 14:00</td>
+                        <td><strong>Poster Session</strong><br>Deep dives into specific projects and one-on-one discussions.</td>
+                    </tr>
+                    <tr>
+                        <td>14:00 – 15:00</td>
+                        <td><strong>Small-group Synthesis</strong><br>Groups of 4-5 synthesize morning discussions to identify key themes and opportunities.</td>
+                    </tr>
+                    <tr>
+                        <td>15:00 – 15:30</td>
+                        <td><em>Coffee/Tea Break & Networking</em></td>
+                    </tr>
+                    <tr>
+                        <td>15:30 – 16:50</td>
+                        <td><strong>Plenary Synthesis</strong><br>Groups share findings to outline the shared research agenda/white paper.</td>
+                    </tr>
+                    <tr>
+                        <td>16:50 – 17:00</td>
+                        <td><strong>Closing Remarks</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="organizers">
+            <h2>Workshop Organizers</h2>
+            <div class="organizer-list">
+                <div class="organizer">
+                    <h3>Yumou Wei*</h3>
+                    <p>Carnegie Mellon University</p>
+                    <p><a href="mailto:yumouw@andrew.cmu.edu">yumouw@andrew.cmu.edu</a></p>
+                </div>
+                <div class="organizer">
+                    <h3>Steven Moore</h3>
+                    <p>George Mason University</p>
+                    <p><a href="mailto:smoore59@gmu.edu">smoore59@gmu.edu</a></p>
+                </div>
+                <div class="organizer">
+                    <h3>Paulo F. Carvalho</h3>
+                    <p>Carnegie Mellon University</p>
+                    <p><a href="mailto:pcarvalh@andrew.cmu.edu">pcarvalh@andrew.cmu.edu</a></p>
+                </div>
+                <div class="organizer">
+                    <h3>John Stamper</h3>
+                    <p>Carnegie Mellon University</p>
+                    <p><a href="mailto:jstamper@andrew.cmu.edu">jstamper@andrew.cmu.edu</a></p>
+                </div>
+                <div class="organizer">
+                    <h3>Christopher Brooks</h3>
+                    <p>University of Michigan</p>
+                    <p><a href="mailto:brooksch@umich.edu">brooksch@umich.edu</a></p>
+                </div>
+            </div>
+            <p class="footnote">* Workshop Chair</p>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>Created for the Small Language Models for Education Workshop.</p>
+        <p>For inquiries, please contact <a href="mailto:yumouw@andrew.cmu.edu">Yumou Wei</a>.</p>
+    </footer>
+
+</body>
+</html>
