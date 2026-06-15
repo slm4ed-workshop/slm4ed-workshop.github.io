@@ -91,6 +91,52 @@
             margin-top: 0;
         }
 
+        /* --- Accepted Papers tab toggle --- */
+        /* The papers pane is hidden until its tab is clicked. */
+        #papers {
+            display: none;
+        }
+
+        /* When the papers view is active, show only the papers pane. */
+        body.papers-view .container > section:not(#papers) {
+            display: none;
+        }
+
+        body.papers-view #papers {
+            display: block;
+        }
+
+        .paper {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid #eee;
+            margin-bottom: 1.5rem;
+        }
+
+        .paper:last-child {
+            margin-bottom: 0;
+        }
+
+        .paper h3 {
+            margin-top: 0;
+            margin-bottom: 0.25rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .paper .authors {
+            margin: 0 0 0.75rem 0;
+            font-size: 0.95rem;
+            color: #555;
+            font-style: italic;
+        }
+
+        .paper .abstract {
+            margin: 0;
+        }
+        /* ---------------------------------- */
+
         /* --- Qualtrics Embed Styles --- */
         .qualtrics-container {
             margin: 2rem 0;
@@ -223,6 +269,7 @@
             <li><a href="#submission">Submission Guidelines</a></li>
             <li><a href="#schedule">Schedule</a></li>
             <li><a href="#organizers">Organizers</a></li>
+            <li><a href="#papers" id="papers-tab">Accepted Papers</a></li>
         </ul>
     </nav>
 
@@ -379,12 +426,108 @@
             <p class="footnote">* Workshop Chair</p>
         </section>
 
+        <section id="papers">
+            <h2>Accepted Papers</h2>
+            <p>The following papers have been accepted for presentation at the workshop.</p>
+
+            <!-- Duplicate a .paper block below for each accepted paper. -->
+            <div class="paper">
+                <h3>Fine-Tuning A 1.2B Large Language Model for Systematic Review Screening in Educational Technology</h3>
+                <p class="authors">Kweku Yamoah, Noah Schroeder, Emmanuel Dorley, Neha Rani and Caleb Schutz</p>
+                <p class="abstract">Systematic reviews traditionally have taken considerable amounts of human time and energy to complete, in part due to the extensive number of titles and abstracts that must be reviewed for potential inclusion. Recently, researchers have begun to explore how to use large language models (LLMs) to make this process more efficient. However, research to date has shown inconsistent results. We posit this is because prompting alone may not provide sufficient context for the model(s) to perform well. In this study, we fine-tune a small 1.2 billion parameter open-weight LLM specifically for study screening in the context of a systematic review in which humans rated more than 8500 titles and abstracts for potential inclusion. Our results showed strong performance improvements from the fine-tuned model, with the weighted F1 score improving 80.79% compared to the base model. When run on the full dataset of 8,277 studies, the fine-tuned model had 86.40% agreement with the human coder, a 91.18% true positive rate, a 86.38% true negative rate, and perfect agreement across multiple inference runs. Taken together, our results show that there is promise for fine-tuning LLMs for title and abstract screening in large-scale systematic reviews.</p>
+            </div>
+
+            <div class="paper">
+                <h3>Structured Feedback for Arabic Competitive Debates Using a Small Language Model</h3>
+                <p class="authors">Ali Al-Zawqari, Ali Safa and Gerd Vandersteen</p>
+                <p class="abstract">Competitive debating is a non-formal educational activity that strengthens critical thinking, argumentation, and persuasive communication. Yet providing structured and consistent feedback remains difficult because speeches are delivered orally and adjudicators must evaluate them under time constraints. We present a rubric-aligned feedback framework for Arabic competitive debates that combines task-specific argument mining with an open-weight 9B Arabic small language model. Building on the Munazarat corpus and its hybrid annotation scheme, we convert segment-level predictions into interpretable speech-level indicators, including claim-support coverage, rebuttal density, repetition rate, and rhetorical balance. These indicators, together with selected transcript spans, are used to generate constrained, evidence-grounded feedback for adjudicators and coaches. To improve trustworthiness, we add a lightweight reliability gate that softens strong recommendations under low confidence, and we compute debate winners deterministically from the same structured signals to avoid inconsistent judgments. An expert study with debate coaches and adjudicators suggests that the framework can provide scalable and pedagogically aligned feedback, while also highlighting limitations in uncertainty communication.</p>
+            </div>
+
+            <div class="paper">
+                <h3>Browser-Sized Agents: Small Language Models and WebLLM for Tool-Augmented AI-Assisted Programming Education</h3>
+                <p class="authors">Bogdan Suvernev, Yuchen Wang, Xindi Tong and Chee Wei Tan</p>
+                <p class="abstract">Programming courses are an early and demanding test bed for educational language models: they require code generation, code reading, multi-step reasoning across files, fast feedback under classroom latency, and an honest separation between what the model produced and what the student understood. We argue that small language models (SLMs)—open-weight models below ten billion parameters that can run on a laptop, a classroom GPU, or even a browser tab—are well aligned with this setting, provided they are deployed as tool-augmented agents rather than monolithic oracles. We sketch a tool-augmented SLM architecture for an AI-assisted programming tutor that pairs a small, fine-tuned planner with deterministic tools (a code executor, a unit-test runner, a documentation retriever, and a knowledge-tracing module that drives adaptive feedback), and we connect this design to three contemporary threads: minimal from-scratch reproductions of GPT-style models that have made the SLM stack legible to students and instructors; the recent position that SLMs are sufficiently powerful and economically necessary for agentic systems; and in-browser inference engines that remove cloud-side dependence entirely. We outline a pilot evaluation aligned with prior work on knowledge-tracing for programming education and discuss the open questions around fine-tuning data, calibration of tool use, and equitable access that the SLM4ED community is well placed to answer.</p>
+            </div>
+
+            <div class="paper">
+                <h3>DiffiQG: Difficulty-Controlled Question Generation Using Small Language Models</h3>
+                <p class="authors">Sahan Bulathwela, Wilson Lee, Kalindu Kumarasinghe and Sarang Balan</p>
+                <p class="abstract">Educational Question Generation (EQG) can reduce teacher workload and support adaptive learning, yet most existing systems lack reliable control over question difficulty grounded in pedagogical frameworks or depend on computationally expensive large language models that pose affordability and ownership complexities, limiting accessibility. This paper presents DiffiQG, a difficulty-controlled question generation framework that explicitly conditions generation on Bloom's Taxonomy using lightweight, fine-tuned transformer models. We benchmark multiple Bloom's classification strategies and identify a high-performing classifier (80.5% accuracy) to serve as an automatic evaluation oracle. Publicly available Bloom-annotated datasets are curated and augmented with generated instructional contexts to enable supervised conditional fine-tuning of Flan-T5 models. Experimental results show that a Flan-T5-Base model achieves strong difficulty control (91.3% Bloom alignment accuracy) while maintaining competitive linguistic quality. Higher-order cognitive levels are generated reliably, while mid-range levels remain challenging due to overlapping conceptual boundaries. Human evaluation confirms strong agreement with automatic difficulty metrics. Overall, this work demonstrates that pedagogically grounded difficulty-controlled EQG can be achieved without large-scale models, paving the way to scalable and privacy-preserving personalised tutoring and assessment generation.</p>
+            </div>
+
+            <div class="paper">
+                <h3>Can Small Language Models Teach Effectively? Evaluating Explanations and Analogies Strategies</h3>
+                <p class="authors">Sijie Mei, Fanfei Meng, Siyun Chen, Shruti Mehta, Talita Cypriano and Seiji Isotani</p>
+                <p class="abstract">Small language models (SLMs) have recently attracted attention in Artificial Intelligence in Education (AIED) because they can be locally deployed with lower computational cost and greater accessibility than large proprietary models. However, their educational value depends not only on efficiency, but also on whether they can provide pedagogically meaningful guidance during tutoring interactions. This exploratory study evaluates how three locally served SLMs (≤ 1.2B parameters), Gemma-3-1B-IT, LLaMA-3.2-1B-Instruct, and Qwen2.5-0.5B-Instruct, use an explanations-and-analogies pedagogical strategy during mathematics tutoring dialogues. Across 54 multi-turn sessions, the models were evaluated on explanation quality, analogy use, correctness, focus, usefulness, and interactional guidance. Results showed consistently limited pedagogical effectiveness across all models, with no interaction rated as fully satisfactory. At the same time, the models exhibited distinct pedagogical failure patterns. LLaMA frequently produced incoherent instructional trajectories, Qwen generated inconsistent or unstable explanations, and Gemma often produced fluent but conceptually misleading tutoring. The findings also suggest that conceptual mathematical tasks such as place-value reasoning may be less compatible with text-only tutoring than more procedural tasks, because they rely heavily on multimodal and visual-spatial scaffolding. Future research should explore more diverse instructional tasks, test additional pedagogical scaffolding to improve reliability, and refine evaluation metrics to better capture responsiveness and conceptual repair.</p>
+            </div>
+
+            <div class="paper">
+                <h3>CSTutorBench: Benchmarking Small Language Models as Tutors for Block-Based Programming</h3>
+                <p class="authors">H. Chad Lane and Bryson Kageler</p>
+                <p class="abstract">Large language models are increasingly explored as AI tutors, yet deploying them in K–12 settings raises concerns around privacy, cost, and reliance on proprietary models. Small language models (SLMs) offer a promising alternative, but selecting the right model for a specific educational context remains difficult, particularly when the target domain, such as block-based programming, is largely absent from model training data. We introduce CSTutorBench, a benchmark for evaluating language models as CS tutors in VEX VR, a block-based robotics environment for middle school students. The benchmark comprises 17 scenario-based questions scored against a pedagogical rubric grounded in established tutoring and feedback research, with an LLM-as-judge pipeline for automated evaluation. Preliminary findings in 11 models (4B–120B parameters) reveal that models perform well on surface-level criteria such as vocabulary and tone but struggle with deeper pedagogical behaviors, particularly avoiding answer leakage and engaging with student debugging histories. In our tests, the model family and the instruction-tuning approach predict tutoring quality far better than parameter count, and a targeted prompt revision grounded in educational prompt engineering research improved scores across all models. These results underscore the value of context-specific, pedagogically grounded benchmarks for SLM selection in educational deployment.</p>
+            </div>
+
+            <div class="paper">
+                <h3>Compression-First Knowledge Tracing with a Small Language Model</h3>
+                <p class="authors">Max Norris, Daniel Huencho and Sahan Bulathwela</p>
+                <p class="abstract">Intelligent tutoring systems depend on accurate models of student mastery over individual skills, or knowledge components. Knowledge tracing (KT) is the standard evaluation task: given a student's prior interactions, predict the correctness of their response to a new question. Most KT models represent each interaction as opaque identifiers, discarding the pedagogical signal in question text; recent text-aware methods restore this signal but at a steep cost, since raw tokens fill the context window so quickly that encoders fit only a handful of interactions, and decoders compensate by scaling to multi-billion-parameter backbones. We introduce ModernBERT-KT, which compresses each interaction to two embedding tokens via a frozen sentence encoder and small MLP adapters, allowing a 150M-parameter ModernBERT-base backbone to process up to 4,000 interactions per student in its native 8,192-token window, around 50x smaller than recent LLM-based KT methods. ModernBERT-KT matches established ID-based and text-aware baselines on XES3G5M and FoundationalASSIST and generalises to questions unseen at training time through content embeddings.</p>
+            </div>
+
+            <div class="paper">
+                <h3>Bounding Boxes to Improve Small Language Model Performance on Vision-Based Grading Tasks</h3>
+                <p class="authors">Lachlan McGinness</p>
+                <p class="abstract">The deployment of Small Language Models (SLMs) in educational settings offers significant advantages in terms of privacy, cost, and scalability. However, SLMs often struggle with complex vision-based tasks, such as grading handwritten student exams, due to the high computational cost of processing large images and the visual distractions present on a full page. In this paper, we investigate whether cropping student responses using bounding boxes can improve the accuracy and computational efficiency of SLMs on a short-answer grading task. Using a dataset of scanned handwritten responses from the 2025 Australian Physics Olympiad, we evaluate the performance of several models ranging from 4B to 72B parameters under varying conditions of Chain of Thought (CoT) prompting and image cropping. Our results demonstrate that using bounding boxes significantly improves grading accuracy and reduces computational cost (FLOPs) across models, with largest gains for the smallest models. We conclude that bounding boxes are a crucial pre-processing step for deploying SLMs in large-scale, vision-based educational assessments.</p>
+            </div>
+
+            <!-- <div class="paper">
+                <h3>Paper Title Goes Here</h3>
+                <p class="authors">Author One, Author Two, Author Three (Affiliation)</p>
+                <p class="abstract">Paste the paper abstract here.</p>
+            </div> -->
+            <!-- End paper blocks. -->
+        </section>
+
     </div>
 
     <footer>
         <p>The 1st Workshop of <em>Small Language Models for Education (SLM4ED)</em> @ Festival of Learning 2026</p>
         <p>For inquiries, please contact the workshop chair: <a href="mailto:yumouw@andrew.cmu.edu">Yumou Wei</a>.</p>
     </footer>
+
+    <script>
+        (function () {
+            var papersTab = document.getElementById('papers-tab');
+            var navLinks = document.querySelectorAll('nav a');
+
+            function showPapers() {
+                document.body.classList.add('papers-view');
+                window.scrollTo(0, 0);
+            }
+
+            function showMain() {
+                document.body.classList.remove('papers-view');
+            }
+
+            // Clicking "Accepted Papers" swaps to the papers-only pane.
+            papersTab.addEventListener('click', function (e) {
+                e.preventDefault();
+                showPapers();
+                history.replaceState(null, '', '#papers');
+            });
+
+            // Clicking any other tab returns to the long page, then lets the
+            // browser jump to that section's anchor as usual.
+            navLinks.forEach(function (link) {
+                if (link === papersTab) return;
+                link.addEventListener('click', showMain);
+            });
+
+            // Honor a direct/shared link to #papers on load.
+            if (window.location.hash === '#papers') {
+                showPapers();
+            }
+        })();
+    </script>
 
 </body>
 </html>
